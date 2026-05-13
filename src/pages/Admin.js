@@ -87,15 +87,18 @@ function Admin({ user, onLogout }) {
       const votesSnapshot = await getDocs(votesRef);
       const votersSnapshot = await getDocs(votersRef);
 
-      // Delete all votes
-      votesSnapshot.forEach((voteDoc) => {
-        voteDoc.ref.delete();
-      });
+      // Delete all votes with await
+      const deleteVotesPromises = votesSnapshot.docs.map((voteDoc) => 
+        deleteDoc(voteDoc.ref)
+      );
 
-      // Delete all voters
-      votersSnapshot.forEach((voterDoc) => {
-        voterDoc.ref.delete();
-      });
+      // Delete all voters with await
+      const deleteVotersPromises = votersSnapshot.docs.map((voterDoc) => 
+        deleteDoc(voterDoc.ref)
+      );
+
+      // Wait for all deletions to complete
+      await Promise.all([...deleteVotesPromises, ...deleteVotersPromises]);
 
       setVoteCount(PARTIES.reduce((acc, party) => {
         acc[party] = 0;
@@ -107,7 +110,7 @@ function Admin({ user, onLogout }) {
       alert('All votes have been reset successfully!');
     } catch (error) {
       console.error('Error resetting votes:', error);
-      alert('Error resetting votes');
+      alert('Error resetting votes: ' + error.message);
     }
   };
 
