@@ -108,12 +108,8 @@ Firestore may automatically create indexes. If needed, create indexes for:
 
 ## API Keys & Configuration
 
-The API key used in this application:
-```
-AIzaSyBjYM_c-ofVUnas28GGwcdCgnBZYgX3eVA
-```
 
-**Note**: This is a public API key and is restricted through Firebase security rules. It can only access the specific collections defined in the rules.
+**Note**: The Firebase API key is now stored securely in your `.env.local` file and should never be committed to the repository. For setup, copy the example from `.env.example` and add your own credentials.
 
 ## Backup & Export Data
 
