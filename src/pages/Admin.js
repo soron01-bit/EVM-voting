@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, onSnapshot, query, doc, updateDoc, getDocs, addDoc, deleteDoc } from 'firebase/firestore';
+import { collection, onSnapshot, getDocs, addDoc, deleteDoc } from 'firebase/firestore';
 import '../styles/Admin.css';
 
 const PARTIES = ['BJP', 'INC', 'TMC', 'CPIM'];
@@ -14,7 +14,7 @@ function Admin({ user, onLogout }) {
   const [activeTab, setActiveTab] = useState('results');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [newVoterId, setNewVoterId] = useState('');
-  const [registrationMessage, setRegistrationMessage] = useState('');
+  // const [registrationMessage, setRegistrationMessage] = useState(''); // Unused, remove
   const [registrationLoading, setRegistrationLoading] = useState(false);
 
   useEffect(() => {

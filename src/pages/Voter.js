@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
+import { collection, addDoc, where, getDocs } from 'firebase/firestore';
 import '../styles/Voter.css';
 
 const PARTIES = ['BJP', 'INC', 'TMC', 'CPIM'];
