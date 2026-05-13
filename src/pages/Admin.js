@@ -10,7 +10,6 @@ function Admin({ user, onLogout }) {
   const [totalVotes, setTotalVotes] = useState(0);
   const [voters, setVoters] = useState([]);
   const [registeredVoters, setRegisteredVoters] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('results');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [newVoterId, setNewVoterId] = useState('');
@@ -41,7 +40,6 @@ function Admin({ user, onLogout }) {
 
       setVoteCount(counts);
       setTotalVotes(total);
-      setLoading(false);
     });
 
     return () => unsubscribe();
