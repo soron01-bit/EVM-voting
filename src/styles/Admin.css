@@ -1,0 +1,747 @@
+.admin-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.admin-navbar {
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-content h1 {
+  color: #333;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.navbar-actions {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.admin-email {
+  color: #666;
+  font-weight: 500;
+}
+
+.logout-button {
+  padding: 10px 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.admin-tabs {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.tab-button {
+  padding: 12px 25px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tab-button.active {
+  background: white;
+  color: #667eea;
+  border-color: white;
+}
+
+.admin-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.results-section {
+  animation: slideUp 0.5s ease;
+}
+
+.stats-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card h2 {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.total-votes {
+  font-size: 3.5rem;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.winner-card {
+  background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.winner-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.winner-info {
+  text-align: center;
+}
+
+.winner-party {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.winner-votes {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.party-result-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.party-result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.party-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.party-header h3 {
+  color: #333;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.badge {
+  background: #f0f0f0;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.badge.winner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.progress-bar-container {
+  background: #f0f0f0;
+  height: 25px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+}
+
+.progress-bar.winner-bar {
+  background: linear-gradient(90deg, #4caf50 0%, #45a049 100%);
+}
+
+.party-stats {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+}
+
+.votes {
+  font-weight: 600;
+  color: #333;
+}
+
+.percentage {
+  color: #667eea;
+  font-weight: bold;
+}
+
+.chart-container {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.3rem;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 300px;
+  gap: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.chart-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.bar-label {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+  order: 4;
+}
+
+.bar-wrapper {
+  width: 60px;
+  height: 200px;
+  background: #f0f0f0;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  order: 2;
+}
+
+.bar {
+  width: 100%;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px 8px 0 0;
+  transition: all 0.5s ease;
+}
+
+.bar.winner-bar {
+  background: linear-gradient(180deg, #4caf50 0%, #45a049 100%);
+}
+
+.bar-value {
+  color: #333;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  order: 3;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.reset-button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reset-button.danger {
+  background: #ff6b6b;
+  color: white;
+}
+
+.reset-button.danger:hover {
+  background: #ff5252;
+  transform: scale(1.05);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+.modal h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.modal p {
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.confirm-button,
+.cancel-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.confirm-button.danger {
+  background: #ff6b6b;
+  color: white;
+}
+
+.confirm-button.danger:hover {
+  background: #ff5252;
+}
+
+.cancel-button {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.cancel-button:hover {
+  background: #e0e0e0;
+}
+
+.voters-section {
+  animation: slideUp 0.5s ease;
+}
+
+.voters-header {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.voters-header h2 {
+  color: #333;
+  margin: 0;
+}
+
+.voter-count {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.empty-state {
+  background: white;
+  border-radius: 15px;
+  padding: 60px 30px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.voters-table {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f8f9fa;
+  border-bottom: 2px solid #667eea;
+}
+
+th {
+  padding: 20px;
+  text-align: left;
+  color: #333;
+  font-weight: 600;
+}
+
+tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+td {
+  padding: 20px;
+  color: #666;
+}
+
+.voter-id {
+  font-family: 'Courier New', monospace;
+  color: #333;
+  font-weight: 500;
+}
+
+.party-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.time {
+  color: #999;
+  font-size: 0.95rem;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.time {
+  color: #999;
+  font-size: 0.95rem;
+}
+
+.register-section {
+  animation: slideUp 0.5s ease;
+}
+
+.register-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-card h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.register-description {
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.register-form {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 35px;
+}
+
+.register-form .form-group {
+  margin-bottom: 20px;
+}
+
+.register-form label {
+  display: block;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.voter-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.voter-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+}
+
+.voter-input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.message {
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  border-left: 4px solid;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #28a745;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+.register-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-button:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.register-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.registered-voters {
+  margin-top: 35px;
+}
+
+.registered-voters h3 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.voters-list {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.voters-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.voters-list thead {
+  background: #f8f9fa;
+  border-bottom: 2px solid #667eea;
+}
+
+.voters-list th {
+  padding: 15px;
+  text-align: left;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.voters-list tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
+}
+
+.voters-list tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.voters-list td {
+  padding: 15px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.status-badge.voted {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.remove-button {
+  padding: 6px 12px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.remove-button:hover {
+  background: #ff5252;
+  transform: scale(1.1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-content {
+    padding: 0 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .admin-tabs {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    width: 100%;
+  }
+
+  .admin-content {
+    padding: 20px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bar-chart {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .modal {
+    margin: 20px;
+    width: 90%;
+    max-width: 90%;
+  }
+}
