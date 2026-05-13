@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, onSnapshot, getDocs, addDoc, deleteDoc } from 'firebase/firestore';
+import { collection, onSnapshot, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import '../styles/Admin.css';
 
 const PARTIES = ['BJP', 'INC', 'TMC', 'CPIM'];
@@ -90,13 +90,13 @@ function Admin({ user, onLogout }) {
       const votersSnapshot = await getDocs(votersRef);
 
       // Delete all votes
-      votesSnapshot.forEach(doc => {
-        doc.ref.delete();
+      votesSnapshot.forEach((voteDoc) => {
+        voteDoc.ref.delete();
       });
 
       // Delete all voters
-      votersSnapshot.forEach(doc => {
-        doc.ref.delete();
+      votersSnapshot.forEach((voterDoc) => {
+        voterDoc.ref.delete();
       });
 
       setVoteCount(PARTIES.reduce((acc, party) => {

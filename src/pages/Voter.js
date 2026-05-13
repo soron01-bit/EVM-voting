@@ -35,7 +35,6 @@ function Voter() {
 
       if (registeredSnapshot.empty) {
         setError('This Voter ID is not registered! Please contact the election commission.');
-        setRequiresRegistration(true);
         setLoading(false);
         return;
       }
