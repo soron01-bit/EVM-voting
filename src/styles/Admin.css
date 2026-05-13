@@ -694,6 +694,54 @@ td {
   transform: scale(1.1);
 }
 
+.toggle-allow-button {
+  padding: 6px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.toggle-allow-button.allow {
+  background: #51cf66;
+  color: white;
+}
+
+.toggle-allow-button.allow:hover {
+  background: #40c057;
+  transform: scale(1.1);
+}
+
+.toggle-allow-button.disallow {
+  background: #ffa94d;
+  color: white;
+}
+
+.toggle-allow-button.disallow:hover {
+  background: #ff922b;
+  transform: scale(1.1);
+}
+
+.allow-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.allow-badge.allowed {
+  background: #d3f9d8;
+  color: #2f9e44;
+}
+
+.allow-badge.not-allowed {
+  background: #ffe0e0;
+  color: #c92a2a;
+}
+
 @keyframes slideUp {
   from {
     transform: translateY(30px);

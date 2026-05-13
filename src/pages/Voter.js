@@ -39,6 +39,14 @@ function Voter() {
         return;
       }
 
+      // Check if voter is allowed to vote
+      const registeredVoter = registeredSnapshot.docs[0].data();
+      if (!registeredVoter.allowed) {
+        setError('Your Voter ID is not approved by the election commission to vote yet. Please contact them.');
+        setLoading(false);
+        return;
+      }
+
       // Check if voter has already voted
       const votersRef = collection(db, 'voters');
       const q = query(votersRef, where('voterId', '==', voterId));

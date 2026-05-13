@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, onSnapshot, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { collection, onSnapshot, getDocs, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import '../styles/Admin.css';
 
 const PARTIES = ['BJP', 'INC', 'TMC', 'CPIM'];
@@ -154,7 +154,8 @@ function Admin({ user, onLogout }) {
       await addDoc(registeredVotersRef, {
         voterId: newVoterId.trim(),
         registeredAt: new Date(),
-        status: 'pending'
+        status: 'pending',
+        allowed: false
       });
 
       setRegistrationMessage({ type: 'success', text: `Voter ID "${newVoterId.trim()}" registered successfully!` });
@@ -179,6 +180,26 @@ function Admin({ user, onLogout }) {
     } catch (error) {
       console.error('Error removing voter:', error);
       setRegistrationMessage({ type: 'error', text: 'Error removing voter' });
+    }
+  };
+
+  const handleToggleAllowVoter = async (voterId, currentAllowedStatus) => {
+    try {
+      const voterDoc = registeredVoters.find(v => v.voterId === voterId);
+      if (voterDoc) {
+        const voterRef = doc(db, 'registered_voters', voterDoc.id);
+        // Use updateDoc instead of addDoc to update specific field
+        const { updateDoc } = await import('firebase/firestore');
+        await updateDoc(voterRef, {
+          allowed: !currentAllowedStatus
+        });
+        const statusText = !currentAllowedStatus ? 'allowed' : 'not allowed';
+        setRegistrationMessage({ type: 'success', text: `Voter ID "${voterId}" is now ${statusText} to vote` });
+        setTimeout(() => setRegistrationMessage(''), 3000);
+      }
+    } catch (error) {
+      console.error('Error toggling voter status:', error);
+      setRegistrationMessage({ type: 'error', text: 'Error updating voter status' });
     }
   };
 
@@ -399,7 +420,8 @@ function Admin({ user, onLogout }) {
                         <tr>
                           <th>S.No</th>
                           <th>Voter ID</th>
-                          <th>Status</th>
+                          <th>Voting Status</th>
+                          <th>Allowed?</th>
                           <th>Registered At</th>
                           <th>Action</th>
                         </tr>
@@ -407,6 +429,7 @@ function Admin({ user, onLogout }) {
                       <tbody>
                         {registeredVoters.map((voter, index) => {
                           const hasVoted = voters.some(v => v.voterId === voter.voterId);
+                          const isAllowed = voter.allowed === true;
                           return (
                             <tr key={voter.id}>
                               <td>{index + 1}</td>
@@ -416,10 +439,22 @@ function Admin({ user, onLogout }) {
                                   {hasVoted ? '✓ Voted' : '⏳ Pending'}
                                 </span>
                               </td>
+                              <td>
+                                <span className={`allow-badge ${isAllowed ? 'allowed' : 'not-allowed'}`}>
+                                  {isAllowed ? '✓ Allowed' : '✗ Not Allowed'}
+                                </span>
+                              </td>
                               <td className="time">
                                 {voter.registeredAt?.toDate?.()?.toLocaleString?.() || 'N/A'}
                               </td>
                               <td>
+                                <button
+                                  onClick={() => handleToggleAllowVoter(voter.voterId, isAllowed)}
+                                  className={`toggle-allow-button ${isAllowed ? 'disallow' : 'allow'}`}
+                                  title={isAllowed ? 'Disallow this voter' : 'Allow this voter to vote'}
+                                >
+                                  {isAllowed ? '🚫 Disallow' : '✓ Allow'}
+                                </button>
                                 <button
                                   onClick={() => handleRemoveVoter(voter.voterId)}
                                   className="remove-button"
