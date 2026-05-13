@@ -14,7 +14,7 @@ function Admin({ user, onLogout }) {
   const [activeTab, setActiveTab] = useState('results');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [newVoterId, setNewVoterId] = useState('');
-  // const [registrationMessage, setRegistrationMessage] = useState(''); // Unused, remove
+  const [registrationMessage, setRegistrationMessage] = useState('');
   const [registrationLoading, setRegistrationLoading] = useState(false);
 
   useEffect(() => {
